@@ -1,0 +1,14 @@
+component_management:
+  individual_components:
+    - component_id: "api"
+      paths:
+        - "api/"
+    - component_id: "spi"
+      paths:
+        - "spi/"
+    - component_id: "impl"
+      paths:
+        - "impl/"
+
+comment:
+  layout: "header, diff, components"
