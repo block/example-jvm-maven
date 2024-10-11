@@ -7,7 +7,7 @@
   <!-- Artifact Information  -->
   <groupId>xyz.block</groupId>
   <artifactId>java-kotlin-maven-example-parent</artifactId>
-  <version>0.0.1-alpha-3</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Block Open Source Java Kotlin Maven Example</name>
   <url>https://opensource.block.xyz</url>
@@ -20,7 +20,7 @@
     <!-- This has to be HTTPS, not git://, for maven-release-plugin to do AUTH correctly -->
     <developerConnection>scm:git:https://github.com/block-open-source/example-java-kotlin-maven-multimodule.git</developerConnection>
     <url>https://github.com/block-open-source/example-java-kotlin-maven-multimodule</url>
-    <tag>v0.0.1-alpha-3</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <!-- Developers -->
