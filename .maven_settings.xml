@@ -1,11 +1,6 @@
 <settings>
   <servers>
     <server>
-      <id>github</id>
-      <username>tbd-releases</username>
-      <password>${env.TBD_RELEASE_GITHUB_PERSONAL_ACCESS_TOKEN}</password>
-    </server>
-    <server>
       <id>block-oss-releases</id>
       <username>${env.ARTIFACTORY_USERNAME}</username>
       <password>${env.ARTIFACTORY_PASSWORD}</password>
