@@ -1,183 +1,196 @@
-# Contribution Guide 
+# Contribution Guide
 
-There are many ways to be an open source contributor, and we're here to help you on your way! You may:
+## Build Prerequisites
 
-* Propose ideas in our 
-  [discord](https://discord.gg/tbd)
-* Raise an issue or feature request in our [issue tracker](LINK_HERE)  ___***FIX LINK AND REMOVE THIS NOTICE***___
-* Help another contributor with one of their questions, or a code review
-* Suggest improvements to our Getting Started documentation by supplying a Pull Request
-* Evangelize our work together in conferences, podcasts, and social media spaces.
+### Hermit
 
-This guide is for you.
+This project uses [Hermit](https://cashapp.github.io/hermit) to 
+manage the environment like Maven and Java versions.
+See [this page](https://cashapp.github.io/hermit/usage/get-started/) to set up Hermit on your machine - make sure to
+download the open source build and activate it for the project.
 
-## Development Prerequisites
-
-___***UPDATE TABLE OF PROJECT DEPS AND INSTALLATION NOTES***___
-
-| Requirement | Tested Version | Installation Instructions                            |
-|-------------|----------------|------------------------------------------------------|
-| Go          | 1.17.6         |[go.dev](https://go.dev/doc/tutorial/compile-install) |
-| Mage        | 1.12.1         |[magefile.org](https://magefile.org/)                 |
-| Java        | 17.0.2         | Below, recommended via [SDKMan](https://sdkman.io)   |
-
-### Go
-
-This project is written in Go, a modern, open source programming language. 
-
-You may verify your `go` installation via the terminal:
-
-```
-$> go version
-go version go1.17.6 darwin/amd64
-```
-
-If you do not have go, we recommend installing it by:
-
-#### MacOS
-
-##### Homebrew
-```
-$> brew install go
-```
-
-#### Linux
-
-See the [Go Installation Documentation](https://go.dev/doc/install).
-
-### Mage
-
-The build is run by Mage.
-
-You may verify your `mage` installation via the terminal:
-
-```
-$> mage --version
-Mage Build Tool 1.12.1
-Build Date: 2021-12-15T21:00:02Z
-Commit: 2f1ec40
-built with: go1.17.6
-```
-
-#### MacOS
-
-##### Homebrew
-
-```
-$> brew install mage
-```
-
-#### Linux
-
-Installation instructions are on the [Magefile home page](https://magefile.org/).
-
-### Java
-
-This project is written in Java, a typesafe, compiled programming language. 
-
-You may verify your `java` installation via the terminal by running `java -version`.
-
-If you do not have Java, we recommend installing it 
-via [SDKMan](https://sdkman.io/install). This is a project which will allow you 
-to easily install the Java Development Kit (JDK), runtime (JRE), and related frameworks, 
-build tools, and runtimes.
-
-After you've installed SDKMan, you may install Java:
-
-#### SDKMan (cross-platform instructions)
+Once you've installed Hermit and before running builds on this repo,
+run from the root of this repo:
 
 ```shell
-$> sdk install java 
- ...
-Do you want java 17.0.2-open to be set as default? (Y/n): Y
-Setting java 17.0.2-open as default.
+source ./bin/activate-hermit
 ```
 
-You may test your installation:
+This will set your environment up correctly in your terminal emulator.
+
+## Building with Maven
+
+This project is built with the
+[Maven Project Management](https://maven.apache.org/) tool.
+It is installed automatically via Hermit above.
+
+If you want to build an artifact on your local filesystem, you can do so by running the
+following command - either at the top level or in
+any of the subprojects:
 
 ```shell
-$> java -version
-openjdk version "17.0.2" 2022-01-18
-OpenJDK Runtime Environment (build 17.0.2+8-86)
-OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
+mvn clean verify
 ```
 
----
-**NOTE**
+This will first clean all previous builds and compiled code, then:
+compile, test, and build the artifacts in each of the submodules
+of this project in the `$moduleName/target` directory.
 
-You may additionally look for other Java versions to install by running `sdk list java`:
-
-...or other installation candidates like Apache Ant, Apache Maven, etc, by running `sdk list`.
-
-Consult the SDKMan documentation for more info.
-
----
-
-## Build (Mage)
-
-```
-$> mage build
-```
-
-## Build (Java / Gradle)
-
-### macOS / Linux
-```shell
-$> ./gradlew build
-```
-
-### Windows
-```shell
-$> gradlew.bat build
-```
-
-## Test (Mage)
-
-```
-$> mage test
-```
-
-## Test (Java / Gradle)
-
-### macOS / Linux
-```shell
-$> ./gradlew test
-```
-
-### Windows
-```shell
-$> gradlew.bat test
-```
-
----
-**NOTE**
-
-You may also combine Gradle build targets in one call, like:
+If you'd like to skip packaging and test only, run:
 
 ```shell
-$> ./gradlew clean build test
+mvn test
 ```
 
----
+You may also run a single test; `cd` into the submodule of choice,
+then use the `-Dtest=` parameter to denote which test to run, for example:
+
+```shell
+cd impl; \
+mvn test -Dtest=TestClassName
+```
+
+To install builds into your local Maven repository, run from the root:
+
+```shell
+mvn install
+```
+
+For more, see the documentation on the [Maven Lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html).
+
+## Release
+
+### SNAPSHOT Releases
+
+In Java we use the SNAPSHOT convention to build and publish a 
+pre-release package that can be consumed for 
+preview/testing/development purposes.
+
+These `SNAPSHOT`s are generated and published **AUTOMATICALLY** whenever
+there's a new push to `main` or on a PR. The SNAPSHOT will be given
+version with format `commit-$shortSHA-SNAPSHOT`, for example
+`commit-00b12aa-SNAPSHOT` and is available from the
+[Block OSS Snapshots Repository](https://blockxyz.jfrog.io/artifactory/block-oss-snapshots-maven2/).
+
+If you want to manually kick that off to preview some changes introduced in a branch, or for some reason regenerate the same snapshot:
+
+1. Open the `CI` Workflow on the `Actions` tab in GitHub, press the **Run workflow button** selecting the branch you want to generate the snapshot from.
+
+<img width="404" alt="image" src="https://github.com/user-attachments/assets/08e1c3dc-b98a-4f83-b0a1-a70d8bf31ecb">
+
+2. In the version field, insert the current version, a short meaningful identifier and the `-SNAPSHOT` suffix, ie:
+
+  - 0.11.0.pr123-SNAPSHOT
+  - 0.11.0.shortsha-SNAPSHOT
+  - 0.11.0.fixsomething-SNAPSHOT
+
+3. Run workflow!
+
+You **MUST** use the `-SNAPSHOT` suffix, otherwise it's not a valid preview `SNAPSHOT` and it will be rejected.
+
+`SNAPSHOT`s will be available in [Block's OSS Artifactory `block-oss-snapshots-maven2` Repository](https://blockxyz.jfrog.io/artifactory/block-oss-snapshots-maven2).
+Consuming projects may bring in these `SNAPSHOT` 
+dependencies by configuring the Block OSS Artifactory repo, 
+for instance in `pom.xml` like:
+
+```shell
+<repositories>
+  <repository>
+    <id>block-oss-snapshots</id>
+    <name>block-oss-snapshots</name>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+    <url>https://blockxyz.jfrog.io/artifactory/block-oss-snapshots-maven2/</url>
+  </repository>
+</repositories>
+```
+
+...or, in Gradle's `gradle.settings.kts`, like:
+
+```shell
+dependencyResolutionManagement {
+  repositories {
+      mavenCentral()
+      // Thirdparty dependencies of Block OSS projects not in Maven Central
+      maven("https://blockxyz.jfrog.io/artifactory/block-oss-snapshots-maven2/")
+  }
+}
+```
+
+### Releasing and Publishing New Versions
+
+To release a new version, execute the following steps:
+
+1. Open the `Release and Publish` Workflow on the `Actions` tab in GitHub, press the **Run workflow button** selecting the branch you want to generate the snapshot from.
+
+<img width="403" alt="image" src="https://github.com/user-attachments/assets/3b21ddea-87c5-4107-b080-339b3efe90ba">
+
+2. In the version field, declare the version to be released. ie:
+
+  - 0.15.2
+  - 0.17.0-alpha-3
+  - 1.6.3
+
+**Choose an appropriate version number based on [semver](https://semver.org/) rules. Remember that versions are immutable once published to Maven Central; they cannot be altered or removed.**
+
+3. Press the `Run workflow` button and leave the main branch selected (unless its a rare case where you don't want to build from the main branch for the release).
+
+4. This:
+
+- Builds
+- Tests
+- Creates artifacts for binaries and sources
+- Signs artifacts with GPG Key
+- Tags git with release number "v$version"
+- Keeps development version in the pom.xml to 0.0.0-main-SNAPSHOT
+- Pushes changes to git
+- Publishes to Maven Central
+- Creates GitHub Release "v$version"
+
+### Publishing a `SNAPSHOT` from a Local Dev Machine
+
+Please take care to only publish `-SNAPSHOT` builds (ie.
+when the `<version>` field of the `pom.xml` ends in
+`-SNAPSHOT`.) unless there's good reason
+to deploy a non-`SNAPSHOT` release. Releases are typically handled via automation
+in GitHub Actions s documented above.
+
+To deploy to Block's Artifactory instance for sharing with others, you
+need your Artifactory username and password handy (available to Block-employed engineers).
+Set environment variables:
+
+```shell
+export ARTIFACTORY_USERNAME=yourUsername; \
+export ARTIFACTORY_PASSWORD=yourPassword
+```
+
+...then run:
+
+```shell
+mvn deploy --settings .maven_settings.xml
+```
 
 ## Communications
 
 ### Issues
 
 Anyone from the community is welcome (and encouraged!) to raise issues via 
-[GitHub Issues](LINK_HERE)  ___***FIX LINK AND REMOVE THIS NOTICE***___.
+GitHub Issues on this repo.
 
 ### Discussions
 
-Design discussions and proposals take place in our [discord](https://discord.gg/tbd).
+Design discussions and proposals take place in GitHub Issues, above.
 
-We advocate an asynchronous, written debate model - so write up your thoughts and invite the community to join in!
+We advocate an asynchronous, written debate model - 
+so write up your thoughts and invite the community to join in!
 
 ### Continuous Integration
 
-Build and Test cycles are run on every commit to every branch on [CircleCI](LINK_HERE).
-
- ___***FIX LINK ABOVE AND REMOVE THIS NOTICE***___
+Build and Test cycles are run on every commit to every branch on GitHub Actions.
 
 ## Contribution
 
