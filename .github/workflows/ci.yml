@@ -3,7 +3,6 @@
 # * Run tests
 #
 # In the Ubuntu environment only, to avoid double uploads from MacOS, it also:
-# * Uploads Test reports to BuildKite
 # * Uploads Coverage reports to CodeCov
 # * Publishes (deploys) to Block's SaaS Artifactory instance as version commit-$shortSHA-SNAPSHOT
 #
@@ -46,7 +45,7 @@ jobs:
           # Maven "test" lifecycle will build and test only on MacOS
           mvn test
 
-  # On Ubuntu we build, test, verify, and deploy: Code Coverage, Test Vectors, and SNAPSHOT artifacts to TBD Artifactory
+  # On Ubuntu we build, test, verify, and deploy: Code Coverage, Test Vectors, and SNAPSHOT artifacts to Block Artifactory
   build-test-deploy-snapshot-ubuntu:
     runs-on: ubuntu-latest
     steps:
