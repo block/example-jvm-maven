@@ -135,6 +135,13 @@ To release a new version, execute the following steps:
   - 0.17.0-alpha-3
   - 1.6.3
 
+The value you choose here will override the value in the `pom.xml`; it 
+will be replaced by the workflow. In this manner, it breaks Maven 
+conventions, but does offer the project lead the opportunity to 
+declare the version at release time. We've heard from teams that this is helpful
+because a project team may not know whether a next version should be a patch, minor, or major
+release bump until it's ready for release.
+
 **Choose an appropriate version number based on [semver](https://semver.org/) rules. Remember that versions are immutable once published to Maven Central; they cannot be altered or removed.**
 
 3. Press the `Run workflow` button and leave the main branch selected (unless its a rare case where you don't want to build from the main branch for the release).
