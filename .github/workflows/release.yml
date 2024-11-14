@@ -71,7 +71,7 @@ jobs:
             --settings .maven_settings.xml \
             -DreleaseVersion=$version \
             -DdevelopmentVersion=$nextVersion \
-            -P ossrh,sign-artifacts
+            -P central,sign-artifacts
         env:
           SIGN_KEY_PASS: ${{ secrets.GPG_SECRET_PASSPHRASE }}
           SIGN_KEY: ${{ secrets.GPG_SECRET_KEY }}
