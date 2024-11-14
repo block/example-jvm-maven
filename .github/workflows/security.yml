@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main
+      - leordev/* # TODO: remove this before merge
 
   # Run every day at 5am UTC
   schedule:
@@ -18,5 +19,5 @@ on:
 
 jobs:
   security-license-scan:
-    uses: TBD54566975/open-source-programs/.github/workflows/security.yml@main
+    uses: block/ospo/.github/workflows/security.yml@main
     secrets: inherit
