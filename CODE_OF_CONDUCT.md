@@ -60,8 +60,8 @@ This Code of Conduct applies within all project spaces, and it also applies when
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the Block Open Source Governance Committee (GC) at
-`TODO Create Google Group` (Issue #1)
-All complaints will be reviewed and investigated promptly and fairly.
+`open-source-governance@block.xyz`. All complaints will be reviewed and 
+investigated promptly and fairly.
 
 The GC is obligated to respect the privacy and security of the
 reporter of any incident.
