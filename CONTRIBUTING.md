@@ -179,7 +179,7 @@ mvn deploy --settings .maven_settings.xml
 ### Issues
 
 Anyone from the community is welcome (and encouraged!) to raise issues via 
-[GitHub Issues](https://github.com/block/example-java-kotlin-maven-multimodule/issues).
+GitHub Issues on this repo.
 
 ### Discussions
 
