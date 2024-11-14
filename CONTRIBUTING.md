@@ -76,6 +76,8 @@ If you want to manually kick that off to preview some changes introduced in a br
 
 1. Open the `CI` Workflow on the `Actions` tab in GitHub, press the **Run workflow button** selecting the branch you want to generate the snapshot from.
 
+<img width="404" alt="image" src="https://github.com/user-attachments/assets/08e1c3dc-b98a-4f83-b0a1-a70d8bf31ecb">
+
 2. In the version field, insert the current version, a short meaningful identifier and the `-SNAPSHOT` suffix, ie:
 
   - 0.11.0.pr123-SNAPSHOT
@@ -124,6 +126,8 @@ dependencyResolutionManagement {
 To release a new version, execute the following steps:
 
 1. Open the `Release and Publish` Workflow on the `Actions` tab in GitHub, press the **Run workflow button** selecting the branch you want to generate the snapshot from.
+
+<img width="403" alt="image" src="https://github.com/user-attachments/assets/3b21ddea-87c5-4107-b080-339b3efe90ba">
 
 2. In the version field, declare the version to be released. ie:
 
