@@ -181,6 +181,12 @@ export ARTIFACTORY_PASSWORD=yourPassword
 mvn deploy --settings .maven_settings.xml
 ```
 
+## Dependency Updates
+
+This project is configured to use RenovateBot. When a new version of dependency is released, Renovate will open a PR to update the
+dependant version. There are a lot of available options, but the defaults are pretty safe. The available options are documented in
+the [RenovateBot docs](https://docs.renovatebot.com).
+
 ## Communications
 
 ### Issues
