@@ -97,7 +97,7 @@
     <version.org.junit>5.10.1</version.org.junit>
 
     <!-- Versioning for Test Dependencies -->
-    <version.org.assertj>3.25.2</version.org.assertj>
+    <version.org.assertj>3.26.3</version.org.assertj>
 
     <!--
     Versioning for transitive Dependencies
