@@ -91,7 +91,7 @@
     -->
 
     <!-- Versioning for Extensions and Plugins -->
-    <version.io.github.martinvisser>0.0.6</version.io.github.martinvisser>
+    <version.io.github.martinvisser>0.1.0</version.io.github.martinvisser>
 
     <!-- Versioning for Dependencies -->
     <version.org.junit.jupiter>5.10.1</version.org.junit.jupiter>
