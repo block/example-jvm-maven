@@ -115,7 +115,7 @@ jobs:
           flags: ${{ runner.os }}
 
       - name: Upload JUnit tests report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tests-report-junit
           path: |
