@@ -94,7 +94,7 @@
     <version.io.github.martinvisser>0.1.0</version.io.github.martinvisser>
 
     <!-- Versioning for Dependencies -->
-    <version.org.junit.jupiter>5.10.1</version.org.junit.jupiter>
+    <version.org.junit>5.10.1</version.org.junit>
 
     <!-- Versioning for Test Dependencies -->
     <version.org.assertj>3.25.2</version.org.assertj>
@@ -138,17 +138,13 @@
         <scope>test</scope>
       </dependency>
       <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>${version.org.junit.jupiter}</version>
-        <scope>test</scope>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${version.org.junit}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>${version.org.junit.jupiter}</version>
-        <scope>test</scope>
-      </dependency>
+
 
       <!--
       Transitive Dependency Management
@@ -201,7 +197,8 @@
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
