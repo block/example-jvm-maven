@@ -6,10 +6,10 @@
 
   <!-- Artifact Information  -->
   <groupId>xyz.block</groupId>
-  <artifactId>java-kotlin-maven-example-parent</artifactId>
+  <artifactId>example-jvm-maven-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Block Open Source Java Kotlin Maven Example</name>
+  <name>JVM Maven Example Parent</name>
   <url>https://opensource.block.xyz</url>
   <description>Build Aggregator and Parent for Example to bootstrap new Java Kotlin Maven Projects</description>
   <inceptionYear>2024</inceptionYear>

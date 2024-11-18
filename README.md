@@ -1,6 +1,6 @@
-# Java Maven Multimodule Example
+# JVM Maven Example
 
-This project kickstarts your work in a new Java/Maven project.
+This project kickstarts your work in a new JVM/Maven project.
 It should get you building as quickly as possible - with best practices
 and services baked in. It's designed for the Block Open Source Program, and may
 be adapted for other contexts.
@@ -27,7 +27,7 @@ To build a project using this template as a base:
 <img width="174" alt="image" src="https://github.com/user-attachments/assets/79660411-759b-4a64-9078-2b1740a9fc18">
 
 2. Select
-`block/example-java-kotlin-maven-multimodule` as the `Repository template`.
+`block/example-jvm-maven` as the `Repository template`.
 
 <img width="499" alt="image" src="https://github.com/user-attachments/assets/c37259e0-4af8-4cd5-87ab-84a72cb9ad30">
 
@@ -39,7 +39,7 @@ quickstart template to get your project ready for action.
 ### 🗺️ Change the Maven Coordinates
 
 This example has `groupID` of `xyz.block` and `artifactId`s
-of `java-kotlin-maven-example-*`. You'll need to update all `pom.xml` files:
+of `example-jvm-maven-*`. You'll need to update all `pom.xml` files:
 
 * `./pom.xml`
 * `./api/pom.xml`
