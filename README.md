@@ -29,7 +29,7 @@ To build a project using this template as a base:
 2. Select
 `block/example-jvm-maven` as the `Repository template`.
 
-<img width="499" alt="image" src="https://github.com/user-attachments/assets/c37259e0-4af8-4cd5-87ab-84a72cb9ad30">
+<img width="327" alt="image" src="https://github.com/user-attachments/assets/cc848e8a-1ec2-497c-878f-fc6af303a6f9">
 
 ## Preparing Your Project from This Template
 
