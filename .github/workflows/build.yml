@@ -100,8 +100,8 @@ jobs:
         env:
           SIGN_KEY_PASS: ${{ secrets.GPG_SECRET_PASSPHRASE }}
           SIGN_KEY: ${{ secrets.GPG_SECRET_KEY }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME_XYZ_BLOCK }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD_XYZ_BLOCK }}
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
