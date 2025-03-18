@@ -460,43 +460,4 @@
     </profile>
   </profiles>
 
-  <repositories>
-    <repository>
-      <id>block-oss-thirdparty</id>
-      <name>block-oss-thirdparty</name>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <url>https://blockxyz.jfrog.io/artifactory/block-oss-thirdparty-maven2/</url>
-    </repository>
-    <repository>
-      <id>block-oss-snapshots</id>
-      <name>block-oss-snapshots</name>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <url>https://blockxyz.jfrog.io/artifactory/block-oss-snapshots-maven2</url>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>block-oss-thirdparty</id>
-      <name>block-oss-thirdparty</name>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <url>https://blockxyz.jfrog.io/artifactory/block-oss-thirdparty-maven2/</url>
-    </pluginRepository>
-  </pluginRepositories>
-
 </project>
