@@ -4,11 +4,11 @@
 #
 # In the Ubuntu environment only, to avoid double uploads from MacOS, it also:
 # * Uploads Coverage reports to CodeCov
-# * Publishes (deploys) to Block's SaaS Artifactory instance as version commit-$shortSHA-SNAPSHOT
+# * Publishes (deploys) to Maven Central SNAPSHOTs as version commit-$shortSHA-SNAPSHOT
 #
 # If triggered from workflow_dispatch, you may select a branch or tag to
 # deploy as an internal "release" (or SNAPSHOT, depending upon the version in the POM)
-# to Block's SaaS Artifactory instance by not specifying a version.
+# to Maven Central SNAPSHOTs
 name: Build, Test & Deploy Snapshot
 
 on:
@@ -85,7 +85,7 @@ jobs:
           echo "Resolved SNAPSHOT Version: $resolvedVersion"
           echo "resolved_version=$resolvedVersion" >> $GITHUB_OUTPUT
 
-      - name: Build, Test, and Deploy to Block SaaS Artifactory
+      - name: Build, Test, and Deploy to Maven Central SNAPSHOTs
         run: |
           set -exuo pipefail
 
@@ -96,12 +96,12 @@ jobs:
             -DnewVersion=${{ steps.resolve_version.outputs.resolved_version }}
 
           # Maven deploy lifecycle will build, run tests, verify, sign, and deploy
-          mvn deploy --batch-mode --settings .maven_settings.xml -P sign-artifacts,ossrh
+          mvn deploy --batch-mode --settings .maven_settings.xml -P sign-artifacts,central
         env:
           SIGN_KEY_PASS: ${{ secrets.GPG_SECRET_PASSPHRASE }}
           SIGN_KEY: ${{ secrets.GPG_SECRET_KEY }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME_XYZ_BLOCK }}
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD_XYZ_BLOCK }}
+          SONATYPE_CENTRAL_USERNAME: ${{ secrets.SONATYPE_CENTRAL_USERNAME }}
+          SONATYPE_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PASSWORD }}
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
