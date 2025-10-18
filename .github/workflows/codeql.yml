@@ -52,7 +52,7 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@42213152a85ae7569bdb6bec7bcd74cd691bfe41 # v3
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -78,7 +78,7 @@ jobs:
 
     # Custom build below
     - name: Init Hermit
-      uses: cashapp/activate-hermit@v1
+      uses: cashapp/activate-hermit@e49f5cb4dd64ff0b0b659d1d8df499595451155a # v1
       with:
         cache: true
     - name: Build, Test, and Verify
@@ -88,6 +88,6 @@ jobs:
     # End of custom build
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@42213152a85ae7569bdb6bec7bcd74cd691bfe41 # v3
       with:
         category: "/language:${{matrix.language}}"

@@ -36,7 +36,7 @@ jobs:
 
       # https://cashapp.github.io/hermit/usage/ci/
       - name: Init Hermit
-        uses: cashapp/activate-hermit@v1
+        uses: cashapp/activate-hermit@e49f5cb4dd64ff0b0b659d1d8df499595451155a # v1
         with:
           cache: true
 
@@ -58,7 +58,7 @@ jobs:
 
       # https://cashapp.github.io/hermit/usage/ci/
       - name: Init Hermit
-        uses: cashapp/activate-hermit@v1
+        uses: cashapp/activate-hermit@e49f5cb4dd64ff0b0b659d1d8df499595451155a # v1
         with:
           cache: true
 
@@ -104,7 +104,7 @@ jobs:
           SONATYPE_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PASSWORD }}
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
@@ -112,7 +112,7 @@ jobs:
           use_oidc: true
 
       - name: Upload JUnit tests report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: tests-report-junit
           path: |
