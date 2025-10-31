@@ -94,7 +94,7 @@
     <version.io.github.martinvisser>0.1.0</version.io.github.martinvisser>
 
     <!-- Versioning for Dependencies -->
-    <version.org.junit>5.12.1</version.org.junit>
+    <version.org.junit>5.14.1</version.org.junit>
 
     <!-- Versioning for Test Dependencies -->
     <version.org.assertj>3.27.3</version.org.assertj>
