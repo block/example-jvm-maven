@@ -58,7 +58,7 @@
   <properties>
     <!-- Versioning for platform -->
     <version.java>21</version.java>
-    <version.kotlin>2.1.10</version.kotlin>
+    <version.kotlin>2.2.21</version.kotlin>
     <kotlin.jvm.target>${version.java}</kotlin.jvm.target>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
