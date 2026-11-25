@@ -19,7 +19,7 @@ permissions: read-all
 
 jobs:
   ossf:
-    uses: block/ospo/.github/workflows/scorecard.yml@main
+    uses: block/ospo/.github/workflows/scorecard.yml@5b4207b693b6093e10d043337a26df6a7446be03 # main
     secrets: inherit
     permissions:
       security-events: write
